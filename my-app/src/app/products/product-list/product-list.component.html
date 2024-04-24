@@ -1,2 +1,7 @@
-<p>Suma to {{ suma }}</p><br>
-<p>Suma to {{ 10 + 100 }}</p>
+<h2>Product list</h2>
+<ul>
+    <li (click)="selectedProduct = 'Angular'">Angular</li>
+    <li (click)="selectedProduct = 'Java'">Java</li>
+    <li (click)="selectedProduct = 'PHP'">PHP</li>
+</ul>
+<app-product-detail [name]="selectedProduct" (bought)="onBuy($event)"></app-product-detail>

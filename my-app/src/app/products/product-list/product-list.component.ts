@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class ProductListComponent {
  suma = 1 + 1
+ selectedProduct = ''
+
+ onBuy(name: string) {
+  window.alert(`Zakupiłeś ${name}!`)
+ }
 }
