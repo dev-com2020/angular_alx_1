@@ -4,4 +4,9 @@
     <li (click)="selectedProduct = 'Java'">Java</li>
     <li (click)="selectedProduct = 'PHP'">PHP</li>
 </ul>
-<app-product-detail [name]="selectedProduct" (bought)="onBuy($event)"></app-product-detail>
+<app-product-detail
+#product 
+[name]="selectedProduct" 
+(bought)="onBuy($event)"></app-product-detail>
+<br>
+<!-- <span>{{ product.name }}</span> -->
