@@ -8,8 +8,9 @@ import { ProductDetailComponent } from '../product-detail/product-detail.compone
 })
 export class ProductListComponent implements AfterViewInit {
  suma = 1 + 1
- selectedProduct = 'Nie wybrano'
+ selectedProduct = ''
  @Input() inputValue = ''
+ products = ['kurs Angular', 'kurs React', 'kurs Vue']
 
  @ViewChild(ProductDetailComponent) productDetail: ProductDetailComponent | undefined
 
@@ -22,6 +23,12 @@ export class ProductListComponent implements AfterViewInit {
     console.log(this.productDetail.name)
    }
  }
+
+//  get trackByProducts() {
+//   return (index: number, name: string) => {
+//   return `${index}-${name}`
+//   }
+
 
  isInvalid(inputValue: string):boolean{
     return inputValue.length < 3
