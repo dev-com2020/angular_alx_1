@@ -10,3 +10,4 @@
 (bought)="onBuy($event)"></app-product-detail>
 <br>
 <!-- <span>{{ product.name }}</span> -->
+<input type="text" [ngClass]="{'error': isInvalid(inputValue)}" [(ngModel)]="inputValue">
