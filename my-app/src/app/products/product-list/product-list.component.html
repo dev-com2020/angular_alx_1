@@ -2,13 +2,13 @@
 <ul>
     <li *ngFor="let product of products;"
     (click)="selectedProduct = product">
-        {{product}}
+        {{product.name}}
     </li>
 </ul>
 <app-product-detail
 #product 
-[name]="selectedProduct" 
-(bought)="onBuy($event)"></app-product-detail>
+[product]="selectedProduct" 
+(bought)="onBuy()"></app-product-detail>
 <br>
 <!-- <span>{{ product.name }}</span> -->
 <!-- <input type="text" [ngClass]="{'error': isInvalid(inputValue)}" [(ngModel)]="inputValue">

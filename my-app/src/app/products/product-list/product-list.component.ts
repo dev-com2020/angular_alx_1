@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
+import { Product } from '../product';
 
 @Component({
   selector: 'app-product-list',
@@ -8,19 +9,28 @@ import { ProductDetailComponent } from '../product-detail/product-detail.compone
 })
 export class ProductListComponent implements AfterViewInit {
  suma = 1 + 1
- selectedProduct = ''
+ selectedProduct: Product | undefined
  @Input() inputValue = ''
- products = ['kurs Angular', 'kurs React', 'kurs Vue']
+ products: Product[] = [
+  {name:'kurs Angular',
+    price: 50,
+   },
+  {name:'kurs React',
+    price: 60,
+   },
+  {name:'kurs Vue',
+    price: 70,
+  }]
 
  @ViewChild(ProductDetailComponent) productDetail: ProductDetailComponent | undefined
 
- onBuy(name: string) {
-  window.alert(`Zakupiłeś ${name}!`)
+ onBuy() {
+  window.alert(`Zakupiłeś ${this.selectedProduct?.name}!`)
  }
 
  ngAfterViewInit(): void {
    if (this.productDetail){
-    console.log(this.productDetail.name)
+    console.log(this.productDetail.product)
    }
  }
 

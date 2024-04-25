@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import { Product } from '../product';
 
 @Component({
   selector: 'app-product-detail',
@@ -10,6 +11,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnD
 export class ProductDetailComponent implements OnInit,OnDestroy,OnChanges {
   @Input() name = ''
   @Output() bought = new EventEmitter<string>()
+  @Input() product: Product | undefined
 
   constructor() {
     console.log(`Produkt ${this.name} w konstruktorze`)
@@ -23,10 +25,10 @@ export class ProductDetailComponent implements OnInit,OnDestroy,OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    const product = changes['name']
+    const product = changes['product']
     if (!product.isFirstChange()) {
-    const oldValue = product.previousValue
-    const newValue = product.currentValue
+    const oldValue = product.previousValue?.name
+    const newValue = product.currentValue.name
     console.log(`Produkt zmieniony z ${oldValue} na ${newValue}`)
   }
 }
@@ -35,7 +37,7 @@ export class ProductDetailComponent implements OnInit,OnDestroy,OnChanges {
 
 
   buy() {
-    this.bought.emit(this.name)
+    this.bought.emit()
   }
 
   get productName(): string {

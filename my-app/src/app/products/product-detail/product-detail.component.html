@@ -1,7 +1,7 @@
-<div *ngIf="productName;else noProduct">
+<div *ngIf="product;else noProduct">
     <h2>Product detail</h2>
-    <h3>{{ productName }}</h3>
-    <div [ngSwitch]="productName">
+    <h3>{{ product.name }}</h3>
+    <div [ngSwitch]="product.name">
         <p *ngSwitchCase="'kurs React'">react jest super</p>
         <p *ngSwitchCase="'kurs Angular'">angular jest super</p>
         <p *ngSwitchDefault>Brak opisu</p>
@@ -25,3 +25,23 @@
 @else {
     <h2>No product selected</h2>
 } -->
+
+<!-- <div style="text-align: center;">
+    <h1 style="background-color: aqua;">
+        Welcome To learn about Structural Directives</h1>
+    Enter Your name : <input type="text" #txtname (keyup)="0"><br />
+    @switch(txtname.value)
+    {
+    @case('Ram'){
+    <b>Hello Ram</b>
+    }
+    @case('Shyam'){
+    <b>Hello Shyam</b>
+    }
+    @case('Mohan'){
+    <b>Hello Mohan</b>
+    }@default{
+    <b>No data matched</b>
+    }
+    }
+</div> -->
