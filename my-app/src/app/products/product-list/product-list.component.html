@@ -10,9 +10,12 @@
 [product]="selectedProduct" 
 (bought)="onBuy()"></app-product-detail>
 <br>
+<h2>Ulubione</h2>
+<app-favorites></app-favorites>
 <div>
     <hr>
     <p>{{ today | formatDate }}</p>
+    <p appCopyright></p>
 </div>
 <!-- <span>{{ product.name }}</span> -->
 <!-- <input type="text" [ngClass]="{'error': isInvalid(inputValue)}" [(ngModel)]="inputValue">

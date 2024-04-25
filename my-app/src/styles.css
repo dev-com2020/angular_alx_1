@@ -2,3 +2,13 @@
 
 @import '~bootstrap/dist/css/bootstrap.min.css';
 /* @import '~fontawesome/fontawesome/css/all.min.css'; */
+
+.copyright {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+}

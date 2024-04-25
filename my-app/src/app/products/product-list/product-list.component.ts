@@ -1,28 +1,31 @@
-import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
 import { Product } from '../product';
+import { ProductsService } from '../products.service';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  styleUrls: ['./product-list.component.css'],
+  providers: [ProductsService]
 })
-export class ProductListComponent implements AfterViewInit {
+export class ProductListComponent implements AfterViewInit, OnInit {
+
  suma = 1 + 1
  selectedProduct: Product | undefined
  @Input() inputValue = ''
  today = new Date()
 
- products: Product[] = [
-  {name:'kurs Angular',
-    price: 50,
-   },
-  {name:'kurs React',
-    price: 60,
-   },
-  {name:'kurs Vue',
-    price: 70,
-  }]
+ constructor(private productService: ProductsService) {
+  }
+
+ngOnInit(): void {
+  this.products = this.productService.getProducts()
+ 
+}
+
+
+ products: Product[] = []
 
  @ViewChild(ProductDetailComponent) productDetail: ProductDetailComponent | undefined
 
