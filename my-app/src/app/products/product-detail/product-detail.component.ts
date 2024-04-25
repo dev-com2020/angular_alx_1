@@ -32,10 +32,6 @@ export class ProductDetailComponent implements OnInit,OnDestroy,OnChanges {
     console.log(`Produkt zmieniony z ${oldValue} na ${newValue}`)
   }
 }
-
-
-
-
   buy() {
     this.bought.emit()
   }

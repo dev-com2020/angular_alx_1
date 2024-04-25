@@ -11,6 +11,8 @@ export class ProductListComponent implements AfterViewInit {
  suma = 1 + 1
  selectedProduct: Product | undefined
  @Input() inputValue = ''
+ today = new Date()
+
  products: Product[] = [
   {name:'kurs Angular',
     price: 50,

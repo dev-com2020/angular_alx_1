@@ -1,6 +1,6 @@
 <h2>Product list</h2>
 <ul>
-    <li *ngFor="let product of products;"
+    <li *ngFor="let product of products | slice:0:5;"
     (click)="selectedProduct = product">
         {{product.name}}
     </li>
@@ -10,6 +10,10 @@
 [product]="selectedProduct" 
 (bought)="onBuy()"></app-product-detail>
 <br>
+<div>
+    <hr>
+    <p>{{ today | formatDate }}</p>
+</div>
 <!-- <span>{{ product.name }}</span> -->
 <!-- <input type="text" [ngClass]="{'error': isInvalid(inputValue)}" [(ngModel)]="inputValue">
 <div [ngStyle]="{'color': isInvalid(inputValue) ? 'red' : 'green'}">

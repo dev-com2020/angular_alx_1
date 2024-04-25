@@ -1,6 +1,8 @@
 <div *ngIf="product;else noProduct">
     <h2>Product detail</h2>
-    <h3>{{ product.name }}</h3>
+    <h3>{{ product.name | uppercase }}</h3>
+    <p>Cena: {{ product.price | currency:'PLN' }}</p>
+    <p>Rabat: {{ 0.10 | percent }}</p>
     <div [ngSwitch]="product.name">
         <p *ngSwitchCase="'kurs React'">react jest super</p>
         <p *ngSwitchCase="'kurs Angular'">angular jest super</p>
