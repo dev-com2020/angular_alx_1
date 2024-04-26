@@ -8,10 +8,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CartComponent } from './cart/cart.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
   {path: 'products', component: ProductListComponent},
   {path: 'cart', component: CartComponent},
+  {path: 'about', component: AboutComponent},
+  {path: '', redirectTo: '/about', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent},
 ]
 
