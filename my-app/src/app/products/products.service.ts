@@ -33,13 +33,18 @@ export class ProductsService {
     return this.http.get<ProductDTO[]>(this.productsUrl).pipe(
       map(products =>
         products.map(product => {
-          return {
-            name: product.title,
-            price: product.price,
-          };
+          return this.convertToProduct(product);
         })
       )
     );
+  }
+
+  private convertToProduct(product: ProductDTO): Product {
+    return {
+      id: product.id,
+      name: product.title,
+      price: product.price,
+    };
   }
 
   addProduct(name:string,price:number):Observable<Product>{
@@ -47,23 +52,13 @@ export class ProductsService {
       title:name,
       price:price
     }).pipe(
-      map(product => {
-        return {
-          name: product.title,
-          price: product.price,
-        };
-      })
+      map(product => this.convertToProduct(product))
     );
-  }
 }
-
-
-
-
-
 
 // getProducts(): Observable<Product[]> {
 //   return this.http.get<ProductDTO[]>(this.productsUrl).pipe(
 //     map(products => products.map(({ title: name, price }) => ({ name, price })))
 //   );
 // }
+}

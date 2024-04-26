@@ -23,10 +23,10 @@ export class ProductListComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
 private getProducts() {
-//  this.productSub = this.productService.getProducts().subscribe((products) => {
-//    this.products = products
-//  })
-this.products$ = this.productService.getProducts()
+ this.productSub = this.productService.getProducts().subscribe((products) => {
+   this.products = products
+ })
+// this.products$ = this.productService.getProducts()
 }
 
 ngOnDestroy(): void {
