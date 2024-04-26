@@ -8,6 +8,7 @@ import { CopyrightDirective } from './copyright.directive';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
+import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 
 
 
@@ -19,7 +20,8 @@ import { ProductCreateComponent } from './product-create/product-create.componen
     CopyrightDirective,
     FavoritesComponent,
     ProductViewComponent,
-    ProductCreateComponent
+    ProductCreateComponent,
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule,
