@@ -3,6 +3,7 @@
     <h3>{{ product.name | uppercase }}</h3>
     <p>Cena: {{ product.price | currency:'PLN' }}</p>
     <p>Rabat: {{ 0.10 | percent }}</p>
+    <p>JSON: {{ product | json }}</p>
     <div [ngSwitch]="product.name">
         <p *ngSwitchCase="'kurs React'">react jest super</p>
         <p *ngSwitchCase="'kurs Angular'">angular jest super</p>
