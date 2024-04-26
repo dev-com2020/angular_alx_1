@@ -14,7 +14,9 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
 const routes: Routes = [
   {path: 'products', component: ProductListComponent},
   {path: 'products/:id', component: ProductDetailComponent},
-  {path: 'cart', component: CartComponent},
+  {path: 'cart', component: CartComponent,
+    canDeactivate:[()=> confirm('Czy jesteś pewny opuszczenia koszyka?')]
+  },
   {path: 'about', component: AboutComponent},
   {path: '', redirectTo: '/about', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent},
