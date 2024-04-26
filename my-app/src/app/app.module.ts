@@ -9,9 +9,11 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CartComponent } from './cart/cart.component';
 import { AboutComponent } from './about/about.component';
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 
 const routes: Routes = [
   {path: 'products', component: ProductListComponent},
+  {path: 'products/:id', component: ProductDetailComponent},
   {path: 'cart', component: CartComponent},
   {path: 'about', component: AboutComponent},
   {path: '', redirectTo: '/about', pathMatch: 'full'},
@@ -31,6 +33,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [RouterModule]
 })
 export class AppModule { }

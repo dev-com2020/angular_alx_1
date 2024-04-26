@@ -1,6 +1,7 @@
 <nav>
-<a routerLink="/products">Produkty</a>
-<a routerLink="/about">O nas</a>
-<a routerLink="/cart">Koszyk</a>
+<a routerLink="/products" routerLinkActive="active">Produkty</a>
+<a [routerLink]="['/products']">Produkty 2</a>
+<a routerLink="/about" routerLinkActive="active">O nas</a>
+<a routerLink="/cart" routerLinkActive="active">Koszyk</a>
 </nav>
 <router-outlet></router-outlet>
