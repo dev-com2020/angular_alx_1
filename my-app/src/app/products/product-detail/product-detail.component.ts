@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { Product } from '../product';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, switchMap } from 'rxjs';
+import { ProductsService } from '../products.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -12,14 +15,17 @@ export class ProductDetailComponent implements OnInit,OnDestroy,OnChanges {
   @Input() name = ''
   @Output() bought = new EventEmitter<string>()
   @Input() product: Product | undefined
+  product$: Observable<Product> | undefined
 
-  constructor() {
-    console.log(`Produkt ${this.name} w konstruktorze`)
-  }
+  constructor(private route: ActivatedRoute, private productService: ProductsService) {}
 
   ngOnInit(): void {
-    console.log(`Produkt ${this.name} w OnInit`)
-  }
+    this.product$ =this.route.paramMap.pipe(
+      switchMap(params => {
+        return this.productService.getProduct(Number(params.get('id')))
+  }))
+}
+
   ngOnDestroy(): void {
     
   }

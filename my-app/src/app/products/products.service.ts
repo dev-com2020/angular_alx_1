@@ -39,6 +39,12 @@ export class ProductsService {
     );
   }
 
+  getProduct(id:number): Observable<Product> {
+    return this.http.get<ProductDTO>(`${this.productsUrl}/${id}`).pipe(
+      map(product => this.convertToProduct(product))
+    );
+  }
+
   private convertToProduct(product: ProductDTO): Product {
     return {
       id: product.id,
