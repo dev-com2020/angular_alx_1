@@ -11,6 +11,7 @@
 (bought)="onBuy()"></app-product-detail>
 <br>
 <div>
+    <app-product-create (added)="onAdd($event)"></app-product-create>
     <hr>
     <p>{{ today | formatDate }}</p>
     <p appCopyright></p>

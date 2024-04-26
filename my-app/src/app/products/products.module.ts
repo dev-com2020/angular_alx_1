@@ -7,6 +7,7 @@ import { FormatDatePipe } from './format-date.pipe';
 import { CopyrightDirective } from './copyright.directive';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ProductViewComponent } from './product-view/product-view.component';
+import { ProductCreateComponent } from './product-create/product-create.component';
 
 
 
@@ -17,7 +18,8 @@ import { ProductViewComponent } from './product-view/product-view.component';
     FormatDatePipe,
     CopyrightDirective,
     FavoritesComponent,
-    ProductViewComponent
+    ProductViewComponent,
+    ProductCreateComponent
   ],
   imports: [
     CommonModule,

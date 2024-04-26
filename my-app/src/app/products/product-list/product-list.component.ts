@@ -38,7 +38,9 @@ ngOnInit(): void {
  
 }
 
-
+onAdd(product: Product) {
+  this.products.push(product)
+  }
 
  products: Product[] = []
 
