@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
 import { Product } from '../product';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, switchMap } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 import { ProductsService } from '../products.service';
+import { CartService } from 'src/app/cart/cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -16,30 +17,26 @@ export class ProductDetailComponent implements OnInit,OnDestroy,OnChanges {
   @Output() bought = new EventEmitter<string>()
   @Input() product: Product | undefined
   product$: Observable<Product> | undefined
+  @Input() id: number = -1
 
-  constructor(private route: ActivatedRoute, private productService: ProductsService) {}
+  constructor(private route: ActivatedRoute, 
+    private productService: ProductsService,
+  private cartService: CartService) {}
 
   ngOnInit(): void {
-    this.product$ =this.route.paramMap.pipe(
-      switchMap(params => {
-        return this.productService.getProduct(Number(params.get('id')))
-  }))
+    this.product$ = this.route.data.pipe(
+      switchMap(data => of(data['product'])
+    ))
 }
 
   ngOnDestroy(): void {
-    
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    const product = changes['product']
-    if (!product.isFirstChange()) {
-    const oldValue = product.previousValue?.name
-    const newValue = product.currentValue.name
-    console.log(`Produkt zmieniony z ${oldValue} na ${newValue}`)
-  }
+  ngOnChanges(): void {
+    this.product$ = this.productService.getProduct(this.id)
 }
-  buy() {
-    this.bought.emit()
+  buy(product: Product) {
+    this.cartService.addProduct(product)
   }
 
   get productName(): string {
