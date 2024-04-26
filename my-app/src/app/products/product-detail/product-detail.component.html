@@ -1,19 +1,10 @@
-<div *ngIf="product$ | async as product; else noProduct">
+<div *ngIf="product$ | async as product">
     <h2>Product detail</h2>
     <h3>{{ product.name | uppercase }}</h3>
     <p>Cena: {{ product.price | currency:'PLN' }}</p>
     <p>Rabat: {{ 0.10 | percent }}</p>
-    <p>JSON: {{ product | json }}</p>
-    <div [ngSwitch]="product.name">
-        <p *ngSwitchCase="'kurs React'">react jest super</p>
-        <p *ngSwitchCase="'kurs Angular'">angular jest super</p>
-        <p *ngSwitchDefault>Brak opisu</p>
-    </div>
     <button (click)="buy(product)">Kup Teraz</button>
 </div>
-<ng-template #noProduct>
-    <h3>No product selected</h3>
-</ng-template>  
 
 <!-- @if(productName){
     <div>
